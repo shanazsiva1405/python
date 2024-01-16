@@ -107,15 +107,18 @@ def tiket():
             print("pilihan anda salah")
             
         n = int(input("masukkan banyak tiket: "))
+        kursi_list = []
         for i in range(1,n+1):
             print("\ntiket ke-",i)
             kursi = (input("masukkan kode kursi: "))
+            kursi_list.append(kursi)
             
-        judul = film
+       
         hari = harga
         hari = nama
         total = n * int(harga)
         print("total yang dibayar: ", total)
+        
         bayar = input ("masukkan jumlah uang pembayaran: ")
         kembalian = int(bayar) - int(total)
         
@@ -132,7 +135,9 @@ def tiket():
                       "E1","E2","E3","E4","E5","E6","E7","E8","E9","E10"]
         list_jam = ["10.00-12.00","12.00-14.00","14.00-16.00","16.00-18.00","18.00-20.00"]
         
-        teks = "=========================================\n\t TIKET BIOSKOP\n=========================================\n\tKUBU DALAM XXI\n=========================================\nfilm: {} \nhari: {}\njam: {} \njumlah tiket: {}\nkode kursi: {}\ntotal: {}\n=========================================\nbayar: {}\nkembalian: {}\n=========================================".format(judul, nama, jam, n, kursi, total, bayar, kembalian)
+        formatted_seats = ", ".join(kursi)
+
+        teks = "=========================================\n\t TIKET BIOSKOP\n=========================================\n\tKUBU DALAM XXI\n=========================================\nfilm: {} \nhari: {}\njam: {} \njumlah tiket: {}\nkode kursi: {}\ntotal: {}\n=========================================\nbayar: {}\nkembalian: {}\n=========================================\n".format(judul, nama, jam, n, ", ".join(kursi_list), total, bayar, kembalian)
         
         if film in list_film and kursi in list_kursi and jam in list_jam:
             file = open("tiket.txt","a")
