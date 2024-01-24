@@ -4,7 +4,7 @@ def anggota():
     print("\t\t\t   Aplikasi Pemesanan Tiket Bioskop     ")
     print("=====================================================================================\n")
     print("\n------------------------------------------------------------------------------------")
-    print("\t\t\t   ||     Kelompok Kubu Dalam     ||   ")
+    print("\t\t\t   ||     Kelompok ALGORITMA & PEMROGRAMAN    ||   ")
     print("--------------------------------------------------------------------------------------")
     print("\t\t 1. Mohammad Haekal                        (2307421045) ")
     print("\t\t 2. Rafi Forza Prasetyo                    (2307421036) ")
@@ -20,7 +20,7 @@ def hari():
     print ("\n")
     print ("====================================================================================")
     print ("\t\t\t   SELAMAT DATANG PARA PENONTON")
-    print ("\t\t\t\t    KUBU DALAM XXI")
+    print ("\t\t\t\t     XXI")
     print ("=====================================================================================\n")
     print ("-------------------------------------------------------------------------------------")
     print ("|| \t\t\t              Hari \t\t\t            Harga  ||")
@@ -85,7 +85,7 @@ def tiket():
             harga = 35000
         elif hari.lower() == "f":
             nama="sabtu"
-            harga = 34000
+            harga = 40000
         elif hari.lower() == "g" :
             nama="minggu"
             harga = 40000
@@ -156,7 +156,6 @@ def tiket():
 def cetak():
     print ("=====================================================================================")
     print ("\t\t\t\t KUBU DALAM XXI")
-    
     print ("=====================================================================================")
     print ("\t\t\t\t CETAK TIKET")
     print ("\t\t\ttiket telah dicetak ambil di file txt")
@@ -181,4 +180,92 @@ anggota()
 hari()
 namafilm()
 tiket()
-   
+
+class Menu:
+    def __init__(self, nama, harga):
+        self.nama = nama
+        self.harga = harga
+
+class Pemesanan:
+    def __init__(self):
+        self.pesanan = []
+
+    def tambah_pesanan(self, menu, jumlah):
+        total_harga = menu.harga * jumlah
+        self.pesanan.append({"menu": menu.nama, "jumlah": jumlah, "total_harga": total_harga})
+
+    def tampilkan_pesanan(self):
+        if not self.pesanan:
+            print("Belum ada pesanan.")
+            return
+
+        menu_list = []
+        print("Pesanan:")
+        for item in self.pesanan:
+            print(f"{item['menu']} - {item['jumlah']} pcs - Rp {item['total_harga']}")
+            menu_list.append(item['menu'])
+
+        total_biaya = sum(item['total_harga'] for item in self.pesanan)
+        print(f"Total biaya: Rp {total_biaya}")
+
+        bayar1 = input("masukkan jumlah uang pembayaran: ")
+        kembalian1 = int(bayar1) - total_biaya
+
+        if kembalian1 < 0:
+            print("\nPEMBAYARAN ANDA BELUM CUKUP, HARAP MASUKKAN ULANG")
+            print("--------------------------------------------------")
+            bayar1 = input("masukkan jumlah uang pembayaran:")
+            kembalian1 = int(bayar1) - total_biaya
+
+        teks = "=========================================\n\tMENU MAKAN\n=========================================\n\tCINEMA XXI\n=========================================\nMenu:\n {} \ntotal: {}\n=========================================\nbayar: {}\nkembalian: {}\n=========================================\n".format("\n ".join(menu_list), total_biaya, bayar1, kembalian1)
+
+        file = open("menu.txt", "a")
+        file.write(teks)
+        file.close()
+        print(input("\ntekan [enter] untuk mencetak tiket"))
+        print("berhasil dicetak")
+
+
+def menu_bioskop():
+    print("\n=======================           MENU MAKANAN XII         ========================")
+    print("Daftar Menu Bioskop:")
+    for i, menu in enumerate(menu_list, start=1):
+        print(f"{i}. {menu.nama} - Rp {menu.harga}")
+
+
+def pesan_makanan():
+    pemesanan_user = Pemesanan()
+
+    while True:
+        menu_bioskop()
+        pilihan = input("Pilih menu XII (1-5) atau ketik 'selesai' jika tidak memesan: ")
+
+        if pilihan.lower() == 'selesai':
+            break
+
+        try:
+            pilihan_menu = int(pilihan)
+            if 1 <= pilihan_menu <= 5:
+                jumlah = int(input("Masukkan jumlah pesanan: "))
+                pemesanan_user.tambah_pesanan(menu_list[pilihan_menu - 1], jumlah)
+
+            else:
+                print("Pilihan tidak valid. Silakan pilih 1-5.")
+        except ValueError:
+            print("Masukkan angka yang valid.")
+
+    print("\nPesanan Anda:")
+    pemesanan_user.tampilkan_pesanan()
+
+
+# Daftar menu dan harga
+menu_list = [
+    Menu("Popcorn", 25000),
+    Menu("Minuman", 15000),
+    Menu("Hot Dog", 20000),
+    Menu("Nachos", 18000),
+    Menu("Es Krim", 12000),
+]
+
+if __name__ == "__main__":
+    pesan_makanan()
