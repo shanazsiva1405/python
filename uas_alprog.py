@@ -9,9 +9,9 @@ def anggota():
     print("\t\t 1. Mohammad Haekal                        (2307421045) ")
     print("\t\t 2. Rafi Forza Prasetyo                    (2307421036) ")
     print("\t\t 3. Hansha Natalegawa                      (2307421054) ")
-    print("\t\t 4. Farrel Arya Putra                      (2307421045) ")
+    print("\t\t 4. Farrel Arya Putra                      (2307421043) ")
     print("\t\t 5. Valenzky Tesalonika Pangaribuan        (2307421045) ")
-    print("\t\t 6. Shanazsiva Nasra                       (2307421045) ")
+    print("\t\t 6. Shanazsiva Nasra                       (2307421044) ")
     print("\t\t 7. Muhammad Irfadillah                    (2307421048) ")
     print(input("tekan [enter] untuk melanjutkan Aplikasi"))
 
