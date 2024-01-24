@@ -4,7 +4,7 @@ def anggota():
     print("\t\t\t   Aplikasi Pemesanan Tiket Bioskop     ")
     print("=====================================================================================\n")
     print("\n------------------------------------------------------------------------------------")
-    print("\t\t\t   ||     Kelompok ALGORITMA & PEMROGRAMAN    ||   ")
+    print("\t\t   ||     Kelompok ALGORITMA & PEMROGRAMAN    ||   ")
     print("--------------------------------------------------------------------------------------")
     print("\t\t 1. Mohammad Haekal                        (2307421045) ")
     print("\t\t 2. Rafi Forza Prasetyo                    (2307421036) ")
@@ -159,10 +159,10 @@ def cetak():
     print ("=====================================================================================")
     print ("\t\t\t\t CETAK TIKET")
     print ("\t\t\ttiket telah dicetak ambil di file txt")
-    print ("\t\t\t\tterimakasi")
+    print ("\t\t\t\tTERIMAKASIH")
     
     print ("-------------------------------------------------------------------------------------")
-    print ("========================           selamat menonton         =========================")    
+    print ("========================           SELAMAT MENONTON         =========================")    
     
 def salah():
     print ("=====================================================================================")
